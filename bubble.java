@@ -1,29 +1,21 @@
-public class Bubble{
-    public static void bubblesort(int[]a){
+public class MyClass {
+    public static void main(String args[]) {
+    int []a= {7,8,5,1,4,2,3};
+        for(int k=0;k<a.length;k++){
+        int temp = 0;
+      
+        for(int j=0;j<a.length-1;j++){
+            if( a[j] > a[j+1]){
+                temp = a[j+1];
+                a[j+1]=a[j];
+                a[j]=temp;
+            }
+        }
         
-        for(int i=0;i<a.length-1;i++){
-            for(int j=0;j<a.length-1;j++){
-                if(a[j]>a[j+1]){
-                    int temp=a[j];
-                    a[j]=a[j+1];
-                    a[j+1]=temp;
-                
-                }
-                else{
-                    a[j]=a[j];
-                }
         }
-    
-    }
-    }
-    public static void printarray(int[]a){
-        for(int i=0;i<a.length;i++){
-            System.out.print(" "+a[i]);
+        for(int p=0;p<a.length;p++){
+            System.out.println(a[p]);
         }
-    }
-    public static void main(String[]args){
-        int[]a={4,3,9,87,45,76,1,10,12};
-        bubblesort(a);
-        printarray(a);
+        
     }
 }
