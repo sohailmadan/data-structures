@@ -58,6 +58,22 @@ public class Mylinkedlist {
           
              
     }
+    public void deletelast(){
+          
+        if (head == null || head.next == null) { 
+           
+        }
+        else{
+            Node n = head;
+            while(n.next.next !=null){
+                n = n.next;
+            }
+            n.next=null;
+        }
+  
+          
+             
+    }
     public void show(){
          Node n = head;
           while(n!=null){
@@ -74,6 +90,7 @@ public class Mylinkedlist {
         m.insertatfirst(90);
         m.insertatindex(32,2);
          m.deleteat(0);
+         m.deletelast();
         m.show();
     }
 }
