@@ -74,6 +74,21 @@ public class Mylinkedlist {
           
              
     }
+     public void reverselist(){
+       
+            Node n = head;
+            Node prev = null;
+            Node  next= null;
+            while(n !=null){
+                 next = n.next;
+                 n.next = prev;
+                 prev = n;
+                 n = next;
+            }
+        head = prev;     
+            
+        
+    }
     public void show(){
          Node n = head;
           while(n!=null){
@@ -91,6 +106,7 @@ public class Mylinkedlist {
         m.insertatindex(32,2);
          m.deleteat(0);
          m.deletelast();
+        m.reverselist();
         m.show();
     }
 }
