@@ -19,6 +19,26 @@ public class Mylinkedlist {
             n.next = node;
         }
     }
+    public void insertatfirst(int data){
+        Node node = new Node();
+        node.data = data;
+        node.next = head;
+        head = node;
+    }
+    public void insertatindex(int data,int index){
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+         Node n = head;
+         for(int i = 0 ;i<index;i++){
+             n=n.next;
+            
+         }
+     
+     System.out.println(n.data);
+        node.next=n.next;
+           n.next = node;
+    }
     public void show(){
          Node n = head;
           while(n!=null){
@@ -32,6 +52,8 @@ public class Mylinkedlist {
         m.insert(4);
         m.insert(88);
         m.insert(12);
+        m.insertatfirst(90);
+        m.insertatindex(32,2);
         m.show();
     }
 }
