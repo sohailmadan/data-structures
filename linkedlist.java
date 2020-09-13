@@ -39,6 +39,25 @@ public class Mylinkedlist {
         node.next=n.next;
            n.next = node;
     }
+    public void deleteat(int index){
+         if(index==0){
+             head = head.next;
+         }
+         else{
+             Node n = head;
+             Node n1 = null;
+             for(int i = 0 ;i<index-1;i++){
+                 n=n.next;
+                
+             }
+             n1 = n.next;
+             n.next = n1.next;
+             
+             
+         }
+          
+             
+    }
     public void show(){
          Node n = head;
           while(n!=null){
@@ -54,6 +73,7 @@ public class Mylinkedlist {
         m.insert(12);
         m.insertatfirst(90);
         m.insertatindex(32,2);
+         m.deleteat(0);
         m.show();
     }
 }
