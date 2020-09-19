@@ -66,7 +66,21 @@ public class Binarysearchtree {
         }
         return min;
     }
-    
+    public boolean searchelement(Node n,int data){
+        
+        while(n !=null){
+            if(n.key > data){
+                n = n.left;
+            }
+            else if(n.key < data){
+                n = n.right;
+            }
+            else{
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String args[]) {
       
       Binarysearchtree bst = new Binarysearchtree();
@@ -79,8 +93,13 @@ public class Binarysearchtree {
       root = bst.insert(root,6);
       root = bst.insert(root,9);
         bst.delete(root,5);
+        
       bst.preordertraverse(root);
-    
+        if(bst.searchelement(root,4)){
+            System.out.println("Element found" );
+        }else{
+            System.out.println("Element not found");
+        }
 
     }
 }
