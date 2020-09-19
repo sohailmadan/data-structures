@@ -34,20 +34,38 @@ public class Binarysearchtree {
             
         }
     }
-    // public function delete(Node n ,int data){
-    //     if(n==null){
-    //         return ;
-    //     }
-    //     if(n.key > data){
-    //             delete(n.left,data);            
-    //     }
-    //     elseif(n.key < data){
-    //         delete(n.right,data);
-    //     }
-    //     else{
-            
-    //     }
-    // }
+    public Node delete(Node n ,int data){
+        if(n==null){
+            return n ;
+        }
+        if(n.key > data){
+                n.left = delete(n.left,data);            
+        }
+        else if(n.key < data){
+                n.right = delete(n.right,data);
+        }
+        else{
+            if(n.left==null){
+                return n.right;
+            } 
+            else if(n.right==null){
+                return n.left;
+            }
+            else{
+                n.key=findmin(n.right);
+                n.right=delete(n.right,n.key);
+            }
+        }
+        return n;
+    }
+    public int findmin(Node n){
+        int min = n.key;
+        while(n.left !=null){
+            min=n.left.key;
+            n = n.left;
+        }
+        return min;
+    }
     
     public static void main(String args[]) {
       
@@ -60,7 +78,9 @@ public class Binarysearchtree {
       
       root = bst.insert(root,6);
       root = bst.insert(root,9);
+        bst.delete(root,5);
       bst.preordertraverse(root);
+    
 
     }
 }
