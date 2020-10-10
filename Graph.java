@@ -13,6 +13,24 @@ public class Mygraph {
             System.out.println();
         }
     }
+    public void bfs(int v,ArrayList<ArrayList<Integer>> adj,int s){
+        boolean []visited = new boolean[v];
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+    
+        visited[s]=true;
+        while(queue.size()!=0){
+            s=queue.poll();
+            System.out.println(s);
+
+             for(int j=0;j<adj.get(s).size();j++){
+                int n = adj.get(s).get(j);
+                if(!visited[n]){
+                        queue.add(n);
+                        visited[n]=true;
+                }
+            }
+        }
+    }
     
     public static void main(String args[]) {
      Mygraph m = new Mygraph();
@@ -28,6 +46,7 @@ public class Mygraph {
         m.addedge(adj, 1, 4); 
         m.addedge(adj, 2, 3); 
         m.addedge(adj, 3, 4); 
-        m.printgraph(adj); 
+       // m.printgraph(adj);
+        m.printgraph(v,adj,1);
     }
 }
