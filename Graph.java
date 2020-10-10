@@ -18,6 +18,7 @@ public class Mygraph {
         LinkedList<Integer> queue = new LinkedList<Integer>();
     
         visited[s]=true;
+        queue.add(s);
         while(queue.size()!=0){
             s=queue.poll();
             System.out.println(s);
@@ -47,6 +48,6 @@ public class Mygraph {
         m.addedge(adj, 2, 3); 
         m.addedge(adj, 3, 4); 
        // m.printgraph(adj);
-        m.printgraph(v,adj,1);
+        m.bfs(v,adj,1);
     }
 }
