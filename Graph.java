@@ -49,6 +49,38 @@ public class Mygraph {
            }
         }
     }
+    public boolean iscyclicdfs(int v,ArrayList<ArrayList<Integer>> adj){
+        boolean []visited = new boolean[v];
+        
+         for(int i=0;i<v;i++){
+                  
+             if(!visited[i]){
+                  
+                 if(iscyclicdfsutil(i,visited,adj,-1)){
+                     return true;
+                 }
+              
+             }
+         }
+        return false;
+    }
+    public boolean iscyclicdfsutil(int v,boolean []visited,ArrayList<ArrayList<Integer>> adj,int parent){
+        visited[v]=true;
+      
+        for(int i=0;i<adj.get(v).size();i++){
+            int n =adj.get(v).get(i); 
+          
+            if(!visited[n]){
+              if(iscyclicdfsutil(n,visited,adj,v)){
+                  return true;
+              }
+            }
+            else if(n!=parent){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String args[]) {
      Mygraph m = new Mygraph();
      int v = 5;
@@ -57,8 +89,8 @@ public class Mygraph {
          adj.add(new ArrayList<Integer>());
      }
       m.addedge(adj,0, 1); 
-      m.addedge(adj,0, 2); 
-        m.addedge(adj,1, 2); 
+      m.addedge(adj,1, 2); 
+        m.addedge(adj,2, 3); 
         m.addedge(adj,2, 0); 
         m.addedge(adj,2, 3); 
         m.addedge(adj,3, 3); 
@@ -66,5 +98,6 @@ public class Mygraph {
         m.bfs(v,adj,1);
         System.out.println("dfs starts");
         m.dfs(v,adj,2);
+        System.out.println("undirected graph is cyclic "+ m.iscyclicdfs(v,adj));
     }
 }
