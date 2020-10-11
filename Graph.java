@@ -32,7 +32,23 @@ public class Mygraph {
             }
         }
     }
-    
+    public void dfs(int v,ArrayList<ArrayList<Integer>> adj,int s){
+        boolean []visited= new boolean[v];
+        dfsutil(visited,adj,s);
+        
+    }
+    public void dfsutil(boolean[]visited,ArrayList<ArrayList<Integer>> adj,int s){
+        
+        visited[s]=true;
+        System.out.println(s);
+        for(int i=0;i<adj.get(s).size();i++){
+            
+           int n = adj.get(s).get(i);
+           if(!visited[n]){
+                 dfsutil(visited,adj,n);
+           }
+        }
+    }
     public static void main(String args[]) {
      Mygraph m = new Mygraph();
      int v = 5;
@@ -48,5 +64,7 @@ public class Mygraph {
         m.addedge(adj,3, 3); 
        // m.printgraph(adj);
         m.bfs(v,adj,1);
+        System.out.println("dfs starts");
+        m.dfs(v,adj,2);
     }
 }
