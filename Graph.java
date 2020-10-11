@@ -40,13 +40,12 @@ public class Mygraph {
      for(int i=0;i<v;i++){
          adj.add(new ArrayList<Integer>());
      }
-        m.addedge(adj, 0, 1); 
-        m.addedge(adj, 0, 4); 
-        m.addedge(adj, 1, 2); 
-        m.addedge(adj, 1, 3); 
-        m.addedge(adj, 1, 4); 
-        m.addedge(adj, 2, 3); 
-        m.addedge(adj, 3, 4); 
+      m.addedge(adj,0, 1); 
+      m.addedge(adj,0, 2); 
+        m.addedge(adj,1, 2); 
+        m.addedge(adj,2, 0); 
+        m.addedge(adj,2, 3); 
+        m.addedge(adj,3, 3); 
        // m.printgraph(adj);
         m.bfs(v,adj,1);
     }
