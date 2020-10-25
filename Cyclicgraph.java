@@ -9,7 +9,12 @@ public class Mygraph {
     public boolean dfscyclic(int v,ArrayList<ArrayList<Integer>> adj,int s){
         boolean []visited= new boolean[v];
         boolean []rstack = new boolean[v];
-       return  dfscyclicutil(visited,adj,s,rstack);
+        for(int i=0;i<v;i++){
+            if(dfscyclicutil(visited,adj,i,rstack)){
+                return true;
+            }
+        }
+       return false ;
         
     }
     public boolean dfscyclicutil(boolean[]visited,ArrayList<ArrayList<Integer>> adj,int s,boolean[]rstack){
@@ -39,18 +44,16 @@ public class Mygraph {
     }
     public static void main(String args[]) {
      Mygraph m = new Mygraph();
-     int v = 5;
+     int v = 4;
      ArrayList<ArrayList<Integer>> adj = new ArrayList<>(v);
      for(int i=0;i<v;i++){
          adj.add(new ArrayList<Integer>());
      }
-      m.addedge(adj,0, 1); 
-      m.addedge(adj,0, 4); 
-        m.addedge(adj,1, 2); 
-        m.addedge(adj,2, 3); 
-        m.addedge(adj,2, 4); 
+      m.addedge(adj,1, 0); 
+      m.addedge(adj,1, 3); 
         m.addedge(adj,3, 1); 
+        m.addedge(adj,2, 3); 
         m.dfscyclic(v,adj,2);
-        System.out.println("is graph cyclic "+ m.dfscyclic(v,adj,1));
+        System.out.println("is graph cyclic "+ m.dfscyclic(v,adj,0));
     }
 }
